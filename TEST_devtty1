@@ -1,0 +1,29 @@
+echo "##############"
+echo "Prepared done!"
+echo "##############"
+echo
+sleep 1
+echo "Sync time with server"
+ntpdate 10.10.10.1
+echo "Done"
+
+
+#This is for record the mac for the booting untis.
+#if [[ -f /home/data/img/get_mac.pl ]];then
+#   echo "Check Ip setting now"
+#   sleep 5
+#   perl /home/data/img/get_mac.pl
+#fi
+
+if [[ -f /home/data/img/img_script.pl ]];then
+   echo ""
+   echo "################"
+   echo "Run main config!"
+   echo "################"
+   perl /home/data/img/img_script.pl 
+else
+  echo "Currently skip the config process"
+fi
+
+sleep 20
+reboot
